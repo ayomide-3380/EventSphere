@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <title>EventSphere | Register</title>
+  <link rel="stylesheet" href="./CSS/register.css">
+  <!-- Firebase SDKs via CDN (v9 compat mode - easy for vanilla JS) -->
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-storage-compat.js"></script>
+</head>
+<body>
+  <nav>
+    <a href="/"><h2 class="title"><i class="fa-regular fa-calendar"></i> EventSphere</h2></a>
+    <div class="links">
+      <a href="/" class="active">Home</a>
+      <a href="events.html">Events</a>
+    
+      <!-- These show when NOT logged in -->
+      <a href="login.html" id="login-link">Login</a>
+      <a href="register.html" id="register-link">Register</a>
+    
+      <!-- These show only when logged in -->
+      <span id="welcome-message" style="display: none; margin-right: 15px; color: #fff;"></span>
+      <a href="add-event.html" id="add-event-link" style="display: none;">Add Event</a>
+      <a href="#" id="logout-link" style="display: none;">Logout</a>
+    </div>
+  </nav>
+
+  <div class="login-container">
+    <div class="login-card">
+      <h2>Create an account</h2>
+      <p class="subtitle">Fill the form below to create a new account</p>
+
+      <form id="register-form">
+        <label for="reg-username">Username</label>
+        <input type="text" id="reg-username" placeholder="johndoe" required>
+
+        <label for="reg-email">Email</label>
+        <input type="email" id="reg-email" placeholder="john@example.com" required>
+
+        <label for="reg-password">Password</label>
+        <input type="password" id="reg-password" placeholder="********" required>
+
+        <label for="reg-confirm-password">Confirm Password</label>
+        <input type="password" id="reg-confirm-password" placeholder="********" required>
+
+        <button type="submit" class="btn-login">Register</button>
+      </form>
+
+      <p class="register-text">
+        Already have an account?
+        <a href="login.html">Login here</a>
+      </p>
+    </div>
+  </div>
+
+  <div class="footer">
+      <p class="footer-text">© 2025 EventSphere. All rights reserved.</p>
+      <div class="footer-links">
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+        <a href="privacy.html">Terms & Privacy</a>
+      </div>
+    </div>
+</body>
+<script src="/JS/firebase.js"></script>
+<script src="JS/script.js"></script>
+<script src="JS/register.js"></script>
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <title>EventSphere | Login</title>
+  <link rel="stylesheet" href="./CSS/login.css">
+  <!-- Firebase SDKs via CDN (v9 compat mode - easy for vanilla JS) -->
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-storage-compat.js"></script>
+</head>
+<body>
+  <nav>
+    <a href="/"><h2 class="title"><i class="fa-regular fa-calendar"></i> EventSphere</h2></a>
+    <div class="links">
+      <a href="/" class="active">Home</a>
+      <a href="events.html">Events</a>
+    
+      <!-- These show when NOT logged in -->
+      <a href="login.html" id="login-link">Login</a>
+      <a href="register.html" id="register-link">Register</a>
+    
+      <!-- These show only when logged in -->
+      <span id="welcome-message" style="display: none; margin-right: 15px; color: #fff;"></span>
+      <a href="add-event.html" id="add-event-link" style="display: none;">Add Event</a>
+      <a href="#" id="logout-link" style="display: none;">Logout</a>
+    </div>
+  </nav>
+
+  <div class="login-container">
+    <div class="login-card">
+      <h2>Welcome Back</h2>
+      <p class="subtitle">Enter your credentials to access your account</p>
+
+      <form id="login-form">
+        <label for="email">Email</label>
+        <input type="email" id="email" placeholder="john@example.com" required>
+
+        <label for="password">Password</label>
+        <input type="password" id="password" placeholder="********" required>
+
+        <button id="login-btn" type="submit" class="btn-login">Login</button>
+      </form>
+
+      <p class="register-text">
+        Don’t have an account?
+        <a href="register.html">Register here</a>
+      </p>
+    </div>
+  </div>
+
+  <div class="footer">
+      <p class="footer-text">© 2025 EventSphere. All rights reserved.</p>
+      <div class="footer-links">
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+        <a href="privacy.html">Terms & Privacy</a>
+      </div>
+    </div>
+</body>
+<script src="/JS/firebase.js"></script>
+<script src="JS/script.js"></script>
+<script src="JS/login.js"></script>
+</html>

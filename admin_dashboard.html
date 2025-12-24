@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EventSphere | Admin Dashboard</title>
+  <link rel="stylesheet" href="./CSS/admin-dashboard.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900&display=swap" rel="stylesheet">
+  <!-- Firebase SDKs via CDN (v9 compat mode - easy for vanilla JS) -->
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-storage-compat.js"></script>
+</head>
+<body>
+  <nav>
+    <a href="/"><h2 class="title"><i class="fa-regular fa-calendar"></i> EventSphere</h2></a>
+    <div class="links">
+      <a href="/" class="active">Home</a>
+      <a href="events.html">Events</a>
+    
+      <!-- These show when NOT logged in -->
+      <a href="login.html" id="login-link">Login</a>
+      <a href="register.html" id="register-link">Register</a>
+    
+      <!-- These show only when logged in -->
+      <span id="welcome-message" style="display: none; margin-right: 15px; color: #fff;"></span>
+      <a href="add-event.html" id="add-event-link" style="display: none;">Add Event</a>
+      <a href="#" id="logout-link" style="display: none;">Logout</a>
+    </div>
+  </nav>
+
+  <div class="container">
+    <div class="dashboard-header">
+      <h1><i class="fa-solid fa-chart-line"></i> Admin Dashboard</h1>
+      <p>Manage users, activities, and monitor platform activity</p>
+    </div>
+
+    <div class="stats-grid">
+      <div class="stat-card">
+        <div class="stat-icon"><i class="fa-solid fa-users"></i></div>
+        <div class="stat-number" id="total-users">0</div>
+        <div class="stat-label">Total Users</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon"><i class="fa-solid fa-calendar-check"></i></div>
+        <div class="stat-number" id="total-activities">0</div>
+        <div class="stat-label">Total Activities</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon"><i class="fa-solid fa-user-check"></i></div>
+        <div class="stat-number" id="active-users">0</div>
+        <div class="stat-label">Active Today</div>
+      </div>
+    </div>
+
+    <div class="tabs">
+      <button class="tab-btn active" data-tab="users"><i class="fa-solid fa-users"></i> Users Management</button>
+      <button class="tab-btn" data-tab="activities"><i class="fa-solid fa-list-check"></i> Activities</button>
+    </div>
+
+    <div id="users" class="tab-content active">
+      <div class="search-filter">
+        <input type="text" id="user-search" class="search-input" placeholder="Search users by name or email...">
+        <button class="btn-view" onclick="refreshUsers()"><i class="fa-solid fa-refresh"></i> Refresh</button>
+      </div>
+      <div class="table-wrapper">
+        <table>
+          <thead>
+            <tr>
+              <th>Username</th>
+              <th>Email</th>
+              <th>Status</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody id="users-table-body">
+            <tr>
+              <td colspan="4">Loading users...</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div id="activities" class="tab-content">
+      <div class="search-filter">
+        <input type="text" id="activity-search" class="search-input" placeholder="Search activities...">
+        <button class="btn-view" onclick="refreshActivities()"><i class="fa-solid fa-refresh"></i> Refresh</button>
+      </div>
+      <div class="table-wrapper">
+        <table>
+          <thead>
+            <tr>
+              <th>Activity Type</th>
+              <th>Description</th>
+              <th>User</th>
+              <th>Date & Time</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody id="activities-table-body">
+            <tr>
+              <td colspan="5">Loading activities...</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <div id="deleteModal" class="modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2>Confirm Deletion</h2>
+        <button class="modal-close" onclick="closeDeleteModal()">×</button>
+      </div>
+      <div class="modal-body">
+        <p id="deleteMessage">Are you sure?</p>
+      </div>
+      <div class="modal-footer">
+        <button class="btn-cancel" onclick="closeDeleteModal()">Cancel</button>
+        <button class="btn-confirm" id="confirmDeleteBtn">Delete</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <p>© 2025 EventSphere Admin Panel. All rights reserved.</p>
+  </div>
+  <script src="JS/firebase.js"></script>
+  <script src="./JS/script.js"></script>
+  <script src="./JS/admin-script.js"></script>
+</body>
+</html>

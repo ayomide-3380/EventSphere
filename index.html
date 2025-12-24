@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>EventSphere | Home</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/CSS/home.css">
+    <link rel="shortcut icon" href="img/image.png" type="image/x-icon">
+    <!-- Firebase SDKs via CDN (v9 compat mode - easy for vanilla JS) -->
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-storage-compat.js"></script>
+  </head>
+  <body>
+    <nav>
+      <a href="/"><h2 class="title"><i class="fa-regular fa-calendar"></i> EventSphere</h2></a>
+      <div class="links">
+        <a href="/" class="active">Home</a>
+        <a href="events.html">Events</a>
+      
+        <!-- These show when NOT logged in -->
+        <a href="login.html" id="login-link">Login</a>
+        <a href="register.html" id="register-link">Register</a>
+      
+        <!-- These show only when logged in -->
+        <span id="welcome-message" style="display: none; margin-right: 15px; color: #fff;"></span>
+        <a href="add-event.html" id="add-event-link" style="display: none;">Add Event</a>
+        <a href="#" id="logout-link" style="display: none;">Logout</a>
+      </div>
+    </nav>
+    <section class="main">
+      <div class="hero">
+	  		<div class="hr-big">
+	  			<h2 class="hero-title">Find and Share Events</h2>
+	  			<h2 class="hero-subtitle">Near You!</h2>
+	  		</div>
+	  		<div class="hero-txt">
+	  			<p>Discover what's happening around you — join, create, and host <br> events with ease.</p>
+	  		</div>
+	  		<div class="butts">
+	  			<a href="events.html">Browse Events ➡</a>
+	  			<a href="register.html">Get Started</a>
+	  		</div>
+      </div>
+    </section>
+    <main>
+      <div class="features">
+        <div class="feature">
+          <i class="fa-regular fa-calendar"></i>
+          <h3>Discover Events</h3>
+          <p>Browse thousands of events happening in your area.</p>
+        </div>
+        <div class="feature">
+          <i class="fa-solid fa-users"></i>
+          <h3>Connect & Network</h3>
+          <p>Meet like-minded people and build your community.</p>
+        </div>
+        <div class="feature">
+          <i class="fa-solid fa-location-dot"></i>
+          <h3>Host Events</h3>
+          <p>Create and manage your own events with ease.</p>
+        </div>
+      </div>
+    </main>
+    <div class="upcoming">
+      <h2>Upcoming Events</h2>
+      <a href="events.html">View All <i class="fa-solid fa-arrow-right"></i></a>
+    </div>
+    <div class="boxes">
+      <div class="cards">
+        <div class="card-header">
+          <h3 class="event-title">Tech Summit 2025</h3>
+        </div>
+        <div class="card-body">
+          <div class="event-date">
+            <i class="fa-regular fa-calendar"></i>
+            March 15, 2025 at 9:00 AM
+          </div>
+          <div class="event-location">
+            <i class="fas fa-location-dot"></i>
+            <span>San Francisco Convention Center</span>
+          </div>
+          <div class="event-host">
+            <i class="fas fa-users"></i>
+            <span>Hosted by TechCorp Inc.</span>
+          </div>
+          <p class="event-description">
+            Join us for the biggest tech conference of the year featuring industry leaders and innovative workshops.
+          </p>        
+          <div class="card-actions">
+            <button class="btn btn-secondary">
+              <i class="far fa-eye"></i>
+              View Details
+            </button>
+            <button class="btn btn-primary" onclick="window.location.href='event-detail.html?id=1'">
+              <i class="fas fa-user-plus"></i>
+              Join Event
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="cards">
+        <div class="card-header2">
+          <h3 class="event-title">Summer Music Festival</h3>
+        </div>
+        <div class="card-body">
+          <div class="event-date">
+            <i class="fa-regular fa-calendar"></i>
+            June 20, 2025 at 2:00 PM
+          </div>
+          <div class="event-location">
+            <i class="fas fa-location-dot"></i>
+            <span>Golden Gate Park</span>
+          </div>
+          <div class="event-host">
+            <i class="fas fa-users"></i>
+            <span>Hosted by SF Music Events</span>
+          </div>
+          <p class="event-description">
+            A day of live music, food trucks, and fun activities for the whole family.
+          </p>        
+          <div class="card-actions">
+            <button class="btn btn-secondary">
+              <i class="far fa-eye"></i>
+              View Details
+            </button>
+            <button class="btn btn-primary" onclick="window.location.href='event-detail.html?id=2'">
+              <i class="fas fa-user-plus"></i>
+              Join Event
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="cards">
+        <div class="card-header3">
+          <h3 class="event-title">Startup Networking Mixer</h3>
+        </div>
+        <div class="card-body">
+          <div class="event-date">
+            <i class="fa-regular fa-calendar"></i>
+            June 20, 2025 at 2:00 PM
+          </div>
+          <div class="event-location">
+            <i class="fas fa-location-dot"></i>
+            <span>Golden Gate Park</span>
+          </div>
+          <div class="event-host">
+            <i class="fas fa-users"></i>
+            <span>Hosted by SF Music Events</span>
+          </div>
+          <p class="event-description">
+            A day of live music, food trucks, and fun activities for the whole family.
+          </p>        
+          <div class="card-actions">
+            <button class="btn btn-secondary">
+              <i class="far fa-eye"></i>
+              View Details
+            </button>
+            <button class="btn btn-primary" onclick="window.location.href='event-detail.html?id=3'">
+              <i class="fas fa-user-plus"></i>
+              Join Event
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="footer">
+      <p class="footer-text">© 2025 EventSphere. All rights reserved.</p>
+      <div class="footer-links">
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+        <a href="privacy.html">Terms & Privacy</a>
+      </div>
+    </div>
+    <script src="./JS/dummy.js"></script>
+  </body>
+  <script src="./JS/firebase.js"></script>
+  <script src="./JS/script.js"></script>
+  <script src="./JS/login.js"></script>
+</html>

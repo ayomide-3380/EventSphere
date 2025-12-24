@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <title>Event Details | EventSphere</title>
+  <link rel="stylesheet" href="/CSS/event-detail.css">
+  <!-- Firebase SDKs via CDN (v9 compat mode - easy for vanilla JS) -->
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-storage-compat.js"></script>
+</head>
+<body>
+  <nav>
+    <a href="/"><h2 class="title"><i class="fa-regular fa-calendar"></i> EventSphere</h2></a>
+    <div class="links">
+      <a href="/" class="active">Home</a>
+      <a href="events.html">Events</a>
+    
+      <!-- These show when NOT logged in -->
+      <a href="login.html" id="login-link">Login</a>
+      <a href="register.html" id="register-link">Register</a>
+    
+      <!-- These show only when logged in -->
+      <span id="welcome-message" style="display: none; margin-right: 15px; color: #fff;"></span>
+      <a href="add-event.html" id="add-event-link" style="display: none;">Add Event</a>
+      <a href="#" id="logout-link" style="display: none;">Logout</a>
+    </div>
+  </nav>
+
+  <div class="event-detail-container">
+    <a href="events.html" class="back-link"><i class="fas fa-arrow-left"></i> Back to Events</a>
+
+    <div class="hero-section">
+      <img id="event-image" src="" alt="Event Image" class="hero-image">
+      <div class="hero-overlay">
+        <div class="hero-content">
+          <h1 id="event-title">Event Title</h1>
+          <!-- <span id="event-category" class="category-badge">Technology</span> -->
+        </div>
+      </div>
+    </div>
+
+    <div class="content-wrapper">
+      <div class="left-column">
+        <section class="about-section">
+          <h2>About This Event</h2>
+          <p id="event-description">Event description goes here...</p>
+        </section>
+      </div>
+
+      <div class="right-sidebar">
+        <div class="info-card">
+          <h3><i class="fa-regular fa-calendar"></i> Date</h3>
+          <p id="event-date">March 15, 2025</p>
+        </div>
+
+        <div class="info-card">
+          <h3><i class="fa-regular fa-clock"></i> Time</h3>
+          <p id="event-time">9:00 AM - 6:00 PM</p>
+        </div>
+
+        <div class="info-card">
+          <h3><i class="fas fa-location-dot"></i> Location</h3>
+          <p id="event-location">San Francisco Convention Center</p>
+        </div>
+
+        <div class="info-card">
+          <h3><i class="fas fa-user"></i> Hosted By</h3>
+          <p id="event-host">TechCorp Inc.</p>
+        </div>
+
+        <div class="info-card">
+          <h3><i class="fas fa-users"></i> Attendees</h3>
+          <div class="attendees-counter">
+            <span id="attendees-current">234</span> / <span id="attendees-max">500</span>
+          </div>
+          <div class="attendance-bar">
+            <div class="attendance-fill"></div>
+          </div>
+        </div>
+
+        <button id="join-btn" class="btn btn-primary">Join Event</button>
+        <button id="share-btn" class="btn btn-secondary"><i class="fa-solid fa-share"></i> Share Event</button>
+      </div>
+    </div>
+
+    <div class="gallery-section">
+      <h2>Event Gallery</h2>
+      <div class="gallery-grid" id="gallery-grid">
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <p class="footer-text">© 2025 EventSphere. All rights reserved.</p>
+    <div class="footer-links">
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+      <a href="privacy.html">Terms & Privacy</a>
+    </div>
+  </div>
+  <script src="JS/firebase.js"></script>
+  <script src="/JS/script.js"></script>
+  <script src="/JS/event-detail.js"></script>
+</body>
+</html>
